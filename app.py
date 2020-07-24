@@ -6,12 +6,12 @@ from werkzeug.utils import secure_filename
 from credentials import UPLOAD_TOKEN, ROOT_URL
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'img/shota'
+UPLOAD_FOLDER = 'meta-shota/img'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['JSON_AS_ASCII'] = False
-data_dir = 'data/'
+data_dir = 'meta-shota/data/'
 
 
 @app.errorhandler(500)
@@ -90,7 +90,7 @@ def upload_file():
         return 'FAILED'
     filename = request.form.get('filename')
     pic['id'] = filename.split('.')[0]
-    with open('data/{}.json'.format(pic['id']), 'w') as f:
+    with open('{}{}.json'.format(data_dir, pic['id']), 'w') as f:
         f.write(dumps(pic, ensure_ascii=False))
         f.close()
     if file and allowed_file(filename):
