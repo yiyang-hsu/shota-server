@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}{{ pic['title']}}{% endblock %}
+
+{% block meta %}
+<meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+<meta property="og:title" content="{{ pic['title'] }}" />
+<meta property="og:image" content="/img/shota/{{ pic['id'] }}.jpg" />
+<meta property="og:description" content="{% for tag in pic['tags'] %}{{ tag }} {% endfor %}" />
+<link rel="canonical" href="https://boys-love.club/shota/id/{{ pic['id'] }}/" />
+{% endblock %}
+
+{% block body %}
+<img src="/img/shota/{{ pic['id'] }}.jpg" />
+<br>
+<h1>{{ pic['title'] }}</h1>
+<p>作者: {{ pic['author'] }}</p>
+<p>tags: {% for tag in pic['tags'] %}#{{ tag }} {% endfor %}</p>
+<p>link: <a href="/shota/id/{{ pic['id'] }}/"><u>shota/id/{{ pic['id'] }}/</u></a></p>
+<p>source: <a href="{{ pic['url'] }}"><u>{{ pic['url'] }}</u></a></p>
+{% endblock %}

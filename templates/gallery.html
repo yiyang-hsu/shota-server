@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Shota Gallery{% endblock %}
+{% block meta %}
+<meta property="og:title" content="Boy&#39;s Love" />
+{% if url %}
+<meta property="og:image" content="{{ url }}" />
+{% endif %}
+<meta property="og:description" content="Random Shota Gallery" />
+{% endblock %}
+{% block body %}
+<h1>Gallery</h1>
+<br>
+<ul class="gallery">
+    {% for pic in pics %}
+    <li class="item">
+        <a href="../id/{{ pic['id']}}/"><img src="/img/shota/{{ pic['id'] }}.jpg" loading="lazy" alt="{{ pic['title']}}"
+                class="lazyload" /></a>
+        <h1>{{ pic['title'] }}</h1>
+        <p>作者: {{ pic['author'] }}</p>
+        <p>tags: {% for tag in pic['tags'] %}#{{ tag }} {% endfor %}</p>
+        <p><a href="{{ pic['url'] }}"><u>source</u></a></p>
+    </li>
+    {% endfor %}
+    {% endblock %}

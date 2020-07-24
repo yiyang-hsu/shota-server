@@ -1,0 +1,3 @@
+[submodule "meta-shota"]
+	path = meta-shota
+	url = git@github.com:yiyang-hsu/meta-shota.git
